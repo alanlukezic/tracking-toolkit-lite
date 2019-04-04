@@ -61,13 +61,14 @@ for i=1:numel(sequence_list)
 
     start_frame = 1;
     n_failures = 0;
+    N = min(size(gt, 1), numel(img_dir));
     
     % allocate variables to store results
-    bboxes = zeros(numel(img_dir), 4);
-    time = zeros(numel(img_dir), 1);
+    bboxes = zeros(N, 4);
+    time = zeros(N, 1);
 
     frame = 1;
-    while frame <= numel(img_dir)
+    while frame <= N
 
         % read frame
         img = imread(fullfile(base_path, img_dir(frame).name));
